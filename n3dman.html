@@ -284,6 +284,29 @@
             transform: scale(1.05);
             outline: 4px solid #00ff00;
         }
+		/* GALLERY THUMBNAIL WRAPPER STYLES */
+        .gallery-item-frame {
+            background-color: #000000;
+            border: 4px solid #ffffff;
+            padding: 10px;          /* Matches padding-like feel of platform-btn */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;           /* Sets a standard small width for the thumbnails */
+            height: 150px;          /* Preserves a neat retro 4:3 display ratio */
+            overflow: hidden;
+        }
+
+        .gallery-item-frame:hover {
+            border-color: #00ff00;  /* Turns neon green on hover just like download button */
+        }
+
+        .clickable-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      /* Scales image inside frame without losing proportions */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -296,16 +319,19 @@
 	</div>
 
 
-	<section id="screenshots" style="text-align: center; margin: 50px 0;">
-    <h1 style="font-family: monospace; color: #fff;">SCREENSHOTS</h1>
-    
-    <!-- Gallery Container -->
-    <div class="gallery-container" style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin: 30px auto; max-width: 1000px;">
-        <img src="n3dman.PNG" alt="Screenshot 1" class="clickable-screenshot">
-        <img src="n3dman-2.png" alt="Screenshot 2" class="clickable-screenshot">
-        <!-- <img src="n3dman.PNG" alt="Screenshot 3" class="clickable-screenshot"> -->
-    </div>
-	</section>
+	 <section id="screenshots" class="pixel-border" style="text-align: center; background-color: #111111;">
+        <h2 class="section-title" style="color: #00ff00;">SCREENSHOTS</h2>
+        
+        <!-- Reusing flex rules to look identical to the download zone buttons layout -->
+        <div class="platform-list">
+            <div class="gallery-item-frame">
+                <img src="n3dman.PNG" alt="Screenshot 1" class="clickable-screenshot">
+            </div>
+            <div class="gallery-item-frame">
+                <img src="n3dman-2.png" alt="Screenshot 2" class="clickable-screenshot">
+            </div>
+        </div>
+    </section>
 
 	<section id="download" class="pixel-border download-zone">
         <h2 class="section-title" style="color: #00ff00;">DOWNLOAD N3DMAN</h2>
