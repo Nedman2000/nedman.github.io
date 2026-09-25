@@ -5,7 +5,7 @@
 	<meta http-equiv="X-Frame-Options" content="DENY">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nedman 2</title>
+    <title>n3dman!</title>
     <!-- Importing a classic pixel-art font -->
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
@@ -196,10 +196,27 @@
             color: #ffffff;
         }
 
-        /* DOWNLOAD ZONE */
+       .section-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the shrink-wrapped elements horizontally */
+            width: 100%;
+        }
+
+        /* 2. Update your Download Zone styles to shrink-wrap */
         .download-zone {
             text-align: center;
             background-color: #111111;
+            width: fit-content;    /* Highlight: Makes container wrap to content size */
+            margin-left: auto;     /* Fallback centering logic */
+            margin-right: auto;
+        }
+
+        /* 3. Add this style for your Screenshots Section to shrink-wrap */
+        #screenshots.pixel-border {
+            width: fit-content;    /* Highlight: Makes container wrap to content size */
+            margin-left: auto;     /* Fallback centering logic */
+            margin-right: auto;
         }
 
         .platform-list {
@@ -240,10 +257,172 @@
             nav { flex-direction: column; text-align: center; }
             .nav-links a { margin: 0 5px; }
         }
+		/* RETRO LIGHTBOX MODAL STYLES */
+        .retro-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 100000; /* Placed above the scanline overlay layer */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .retro-modal-content {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            /* 8-bit retro border match */
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 3rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .close-modal-btn:hover {
+            color: #00ff00; /* Glows neon green like your buttons */
+        }
+        
+        /* Adds a pointer cursor over your thumbnails so users know they can click */
+        .clickable-screenshot {
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+        .clickable-screenshot:hover {
+            transform: scale(1.05);
+            outline: 4px solid #00ff00;
+        }
+		/* GALLERY THUMBNAIL WRAPPER STYLES */
+        .gallery-item-frame {
+            background-color: #000000;
+            border: 4px solid #ffffff;
+            padding: 10px;          /* Matches padding-like feel of platform-btn */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;           /* Sets a standard small width for the thumbnails */
+            height: 150px;          /* Preserves a neat retro 4:3 display ratio */
+            overflow: hidden;
+        }
+
+        .gallery-item-frame:hover {
+            border-color: #00ff00;  /* Turns neon green on hover just like download button */
+        }
+
+        .clickable-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      /* Scales image inside frame without losing proportions */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+	<!-- header -->
+	 <header class="pixel-border">
+        <nav>
+            <div class="logo">THE LEGEND - THE THETA - THE NEDMAN</div>
+            <div class="nav-links">
+                <a href="#changelog">CHANGELOG</a>
+                <a href="#media">SCREENSHOTS</a>
+                <a href="#download">DOWNLOAD</a>
+				<a href="index.html">BACK TO WHENCE YOU CAME</a>
+            </div>
+        </nav>
+    </header>
 	
-	<img src="const.jpg" alt="Description of the image" width="500" height="300">
-	
+	<div class="section-wrapper">
+
+	<section class="pixel-border">
+		<div class="logo">
+			<img src="const.jpg" alt="Description of the imame">
+		</div>
+	</section>
+
+	 <!-- Game changelogs -->
+    <section id="changelog" class="pixel-border">
+        <h1 class="section-title">Version History</h1>
+		<p style="font-size: 1.0rem; margin-bottom: 15px;">DO TO!</p>
+    </section>
+
+	<div id="lightboxModal" class="retro-modal">
+    <span class="close-modal-btn">&times;</span>
+    <img class="retro-modal-content" id="lightboxTargetImg" alt="Enlarged screenshot">
+	</div>
+
+	 <section id="media" class="pixel-border" style="text-align: center; background-color: #111111;">
+        <h2 class="section-title" style="color: #00ff00;">SCREENSHOTS</h2>
+        
+        <!-- Reusing flex rules to look identical to the download zone buttons layout -->
+        <div class="platform-list">
+            <div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 1" class="clickable-screenshot">
+            </div>
+            <div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 2" class="clickable-screenshot">
+            </div>
+			<div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 3" class="clickable-screenshot">
+            </div>
+			<div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 4" class="clickable-screenshot">
+            </div>
+			<div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 5" class="clickable-screenshot">
+            </div>
+			<div class="gallery-item-frame">
+                <img src="const.jpg" alt="Screenshot 6" class="clickable-screenshot">
+            </div>
+        </div>
+    </section>
+
+	<section id="download" class="pixel-border download-zone">
+        <h2 class="section-title" style="color: #00ff00;">DOWNLOAD NEDMAN 2</h2>
+        <p style="font-size: 1.0rem;">SELECT YOUR OS</p>
+        <div class="platform-list">
+            <!-- Replace the # with the actual download links -->
+            <a href="#" class="platform-btn">NOT AVAILABLE</a>
+        </div>
+    </section>
+</div>
+
+	<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxTargetImg');
+            const closeBtn = document.querySelector('.close-modal-btn');
+            const screenshots = document.querySelectorAll('.clickable-screenshot');
+
+            // When any thumbnail is clicked
+            screenshots.forEach(img => {
+                img.addEventListener('click', () => {
+                    modal.style.display = 'flex';       // Show the modal block
+                    modalImg.src = img.src;             // Load the clicked image source
+                });
+            });
+
+            // When the 'X' button is clicked
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                modalImg.src = '';                      // Clear source to save memory
+            });
+
+            // Close the modal automatically if you click on the dark background
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                }
+            });
+        });
+    </script>
 </body>
